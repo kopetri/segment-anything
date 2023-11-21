@@ -9,8 +9,8 @@ from groundingdino.util.inference import predict
 from groundingdino.util.slconfig import SLConfig
 from groundingdino.util.utils import clean_state_dict
 from huggingface_hub import hf_hub_download
-from ..build_sam import sam_model_registry
-from ..predictor import SamPredictor
+from build_sam import sam_model_registry
+from predictor import SamPredictor
 
 SAM_MODELS = {
     "vit_h": "https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth",
