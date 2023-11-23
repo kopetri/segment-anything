@@ -10,6 +10,9 @@ from functools import partial
 
 from .modeling import ImageEncoderViT, MaskDecoder, PromptEncoder, Sam, TwoWayTransformer
 
+from safetensors.torch import load_file
+from pathlib import Path
+
 
 def build_sam_vit_h(checkpoint=None):
     return _build_sam(
@@ -101,7 +104,10 @@ def _build_sam(
     )
     sam.eval()
     if checkpoint is not None:
-        with open(checkpoint, "rb") as f:
-            state_dict = torch.load(f)
+        if Path(checkpoint).suffix == ".safetensors":
+            state_dict = load_file(checkpoint)
+        else:
+            with open(checkpoint, "rb") as f:
+                state_dict = torch.load(f)
         sam.load_state_dict(state_dict)
     return sam
