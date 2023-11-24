@@ -119,3 +119,16 @@ class LangSAM():
             masks = self.predict_sam(image_pil, boxes)
             masks = masks.squeeze(1)
         return masks, boxes, phrases, logits
+    
+    def predict_coords(
+        self,
+        image_pil,
+        point_coords=None,
+        point_labels=None,
+        box=None,
+        mask_input=None,
+        multimask_output=True,
+        return_logits=False,
+    ):
+        self.sam.set_image(image_pil)
+        return self.sam.predict(point_coords, point_labels, box, mask_input, multimask_output, return_logits)
