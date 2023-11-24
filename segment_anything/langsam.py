@@ -130,5 +130,6 @@ class LangSAM():
         multimask_output=True,
         return_logits=False,
     ):
-        self.sam.set_image(image_pil)
+        image_array = np.asarray(image_pil)
+        self.sam.set_image(image_array)
         return self.sam.predict(point_coords, point_labels, box, mask_input, multimask_output, return_logits)
