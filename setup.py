@@ -12,7 +12,7 @@ setup(
     install_requires=[],
     packages=find_packages(exclude="notebooks"),
     extras_require={
-        "all": ["matplotlib", "pycocotools", "opencv-python", "onnx", "onnxruntime", "safetensors"],
+        "all": ["matplotlib", "pycocotools", "opencv-python", "onnx", "onnxruntime", "safetensors", "groundingdino-py"],
         "dev": ["flake8", "isort", "black", "mypy"],
     },
 )
